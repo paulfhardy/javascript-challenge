@@ -1,8 +1,11 @@
 // from data.js
 var tableData = data;
 console.log(tableData);
-// YOUR CODE HERE!
+
+// MY CODE HERE!
 const tbody = d3.select("tbody");
+let button = d3.select("#filter-btn");
+let form = d3.select("#form");
 
 // Use d3 to update each cell's text with
 // UFO sighting data values 
@@ -15,3 +18,16 @@ tableData.forEach(ufoReport => {
      cell.text(value);
    });
 });
+
+const runEnter = () => {
+
+  // Prevent the page from refreshing on submit
+  d3.event.preventDefault();
+
+  console.log("Enter");
+
+};
+
+// Create event handlers 
+button.on("click", runEnter);
+form.on("submit",runEnter);
