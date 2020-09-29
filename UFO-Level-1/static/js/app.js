@@ -25,22 +25,39 @@ const runEnter = () => {
   d3.event.preventDefault();
 
   //  console.log("Enter");
+  var filteredData = tableData.map(item => item );
 
-  // Select the input element and get the raw HTML node
+  // Select the date input element and get the raw HTML node
   // Get the value property of the input element
   let inputElement = d3.select("#datetime"), 
       inputValue = inputElement.property("value");
-      console.log(inputValue);
+      if (inputValue) {
+        var filteredData = filteredData.filter(ufoRecord => ufoRecord.datetime === inputValue);
+      }
+
+  // Select the city input element and get the raw HTML node
+  // Get the value property of the input element
+  let inputCityElement = d3.select("#city"), 
+       cityinputValue = inputCityElement.property("value");
+       if (cityinputValue) {
+        var filteredData = filteredData.filter(ufoRecord => ufoRecord.city === cityinputValue);
+      }
+
+
   // Setup filter criteria
-  let filteredData = tableData.filter(ufoRecord => ufoRecord.datetime === inputValue);
-  console.log(filteredData);
+  // let filteredData = tableData.filter(ufoRecord => ufoRecord.datetime === inputValue);
+  // console.log(filteredData);
 
-  //var tbody1 = d3.select("tbody");
-  //tbody1.remove();
+  // let filteredData = tableData.filter(ufoRecord => ufoRecord.datetime === inputValue 
+  //   && ufoRecord.city === cityinputValue);
+  // console.log(filteredData);
 
+
+  // Clear prior tr elements at tbody level (leave thead>tr as is)
   var trall = d3.selectAll("tbody>tr");
   trall.remove();
 
+  // Rebuild table with filtered results
   filteredData.forEach((ufoReport) => {
     let row = tbody.append("tr");
     Object.values(ufoReport).forEach(value => {
