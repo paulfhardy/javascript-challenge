@@ -6,6 +6,7 @@ Both Level 1 and Level 2 functionality requirements have been completed for this
 folders are available here:
 
 Level 1: [Level 1: Automatic Table and Date search](UFO-Level-1)
+
 Level 2: [Level 2: Multiple Search Categories](UFO-Level-2)
 
 ### Level 1: Automatic Table and Date Search (Required)
