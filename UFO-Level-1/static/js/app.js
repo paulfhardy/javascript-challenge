@@ -24,8 +24,30 @@ const runEnter = () => {
   // Prevent the page from refreshing on submit
   d3.event.preventDefault();
 
-  console.log("Enter");
+  //  console.log("Enter");
 
+  // Select the input element and get the raw HTML node
+  // Get the value property of the input element
+  let inputElement = d3.select("#datetime"), 
+      inputValue = inputElement.property("value");
+      console.log(inputValue);
+  // Setup filter criteria
+  let filteredData = tableData.filter(ufoRecord => ufoRecord.datetime === inputValue);
+  console.log(filteredData);
+
+  //var tbody1 = d3.select("tbody");
+  //tbody1.remove();
+
+  var trall = d3.selectAll("tbody>tr");
+  trall.remove();
+
+  filteredData.forEach((ufoReport) => {
+    let row = tbody.append("tr");
+    Object.values(ufoReport).forEach(value => {
+      let cell = row.append("td");
+      cell.text(value);
+    });
+  }); 
 };
 
 // Create event handlers 
