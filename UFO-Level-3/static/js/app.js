@@ -25,9 +25,9 @@ tableData.forEach(ufoReport => {
      cell.text(value);
    });
 });
-//********************************************/
+
 // Populate data in date select dropdown list
-//********************************************/
+
 // Select d3 input element
 const tdateselect = d3.select("#selectdate");
 
@@ -46,6 +46,8 @@ justdatesunique.forEach(datevalue =>{
 })
 
 
+
+//**********************************************************************/
 // runEnter = Triggered by Filter Table Button or Submit Form
 const runEnter = () => {
 
@@ -55,14 +57,19 @@ const runEnter = () => {
   // Make a copy of the tableData data set to filteredData.
   var filteredData = tableData.map(item => item );
 
-  // Select the date select element and get the raw HTML node
+  // Select the date input element and get the raw HTML node
   // Get the value property of the input element
-
+  // let inputElement = d3.select("#datetime"), 
+  //     inputValue = inputElement.property("value");
+  //     if (inputValue) {
+  //       var filteredData = filteredData.filter(ufoRecord => ufoRecord.datetime === inputValue);
+  //     }
+  
   let selectedinputElement = d3.select("#selectdate"), 
-  selectedinputValue = selectedinputElement.property("value");
-  if (selectedinputValue) {
-    var filteredData = filteredData.filter(ufoRecord => ufoRecord.datetime === selectedinputValue);
-  }
+    selectedinputValue = selectedinputElement.property("value");
+    if (selectedinputValue) {
+      var filteredData = filteredData.filter(ufoRecord => ufoRecord.datetime === selectedinputValue);
+    }
 
   // Clear prior tr elements at tbody level (leave thead>tr as is)
   var trall = d3.selectAll("tbody>tr");
