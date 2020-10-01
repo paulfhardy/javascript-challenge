@@ -25,6 +25,115 @@ tableData.forEach(ufoReport => {
      cell.text(value);
    });
 });
+//********************************************/
+// Populate data in DATE select dropdown list
+//********************************************/
+// Select d3 input element
+const tdateselect = d3.select("#selectdate");
+
+// Gather all data in an array 
+var justdates = [""];
+tableData.forEach(uforeport => justdates.push(uforeport.datetime));
+
+// Make the list unique so values don't repeat
+const justdatesunique = Array.from(new Set(justdates));
+
+
+// Build the drop down list
+justdatesunique.forEach(datevalue =>{
+  var option = tdateselect.append("option");
+  option.text(datevalue);
+  option.attr("value",datevalue);
+});
+
+
+//********************************************/
+// Populate data in CITY select dropdown list
+//********************************************/
+// Select d3 input element
+const tcityselect = d3.select("#selectcity");
+
+// Gather all data in an array 
+var justcities = [];
+tableData.forEach(uforeport => justcities.push(uforeport.city));
+
+// Make the list unique so values don't repeat
+const justcitiesunique = Array.from(new Set(justcities));
+justcitiesunique.push("");
+justcitiesunique.sort();
+
+// Build the drop down list
+justcitiesunique.forEach(cityvalue =>{
+  var option = tcityselect.append("option");
+  option.text(cityvalue);
+  option.attr("value",cityvalue);
+});
+
+//********************************************/
+// Populate data in STATE select dropdown list
+//********************************************/
+// Select d3 input element
+const tstateselect = d3.select("#selectstate");
+
+// Gather all data in an array 
+var juststates = [];
+tableData.forEach(uforeport => juststates.push(uforeport.state));
+
+// Make the list unique so values don't repeat
+const juststatesunique = Array.from(new Set(juststates));
+juststatesunique.push("");
+juststatesunique.sort();
+
+// Build the drop down list
+juststatesunique.forEach(statevalue =>{
+  var option = tstateselect.append("option");
+  option.text(statevalue);
+  option.attr("value",statevalue);
+});
+
+//********************************************/
+// Populate data in COUNTRY select dropdown list
+//********************************************/
+// Select d3 input element
+const tcountryselect = d3.select("#selectcountry");
+
+// Gather all data in an array 
+var justcountries = [];
+tableData.forEach(uforeport => justcountries.push(uforeport.country));
+
+// Make the list unique so values don't repeat
+const justcountriesunique = Array.from(new Set(justcountries));
+justcountriesunique.push("");
+justcountriesunique.sort();
+
+// Build the drop down list
+justcountriesunique.forEach(countryvalue =>{
+  var option = tcountryselect.append("option");
+  option.text(countryvalue);
+  option.attr("value",countryvalue);
+});
+
+//********************************************/
+// Populate data in SHAPE select dropdown list
+//********************************************/
+// Select d3 input element
+const tshapeselect = d3.select("#selectshape");
+
+// Gather all data in an array 
+var justshapes = [];
+tableData.forEach(uforeport => justshapes.push(uforeport.shape));
+
+// Make the list unique so values don't repeat
+const justshapesunique = Array.from(new Set(justshapes));
+justshapesunique.push("");
+justshapesunique.sort();
+
+// Build the drop down list
+justshapesunique.forEach(shapevalue =>{
+  var option = tshapeselect.append("option");
+  option.text(shapevalue);
+  option.attr("value",shapevalue);
+});
 
 // runEnter = Triggered by Filter Table Button or Submit Form
 const runEnter = () => {
@@ -45,42 +154,42 @@ const runEnter = () => {
 
   // Select the date input element and get the raw HTML node
   // Get the value property of the input element
-  let inputElement = d3.select("#datetime"), 
-      inputValue = inputElement.property("value");
-      if (inputValue) {
-        var filteredData = filteredData.filter(ufoRecord => ufoRecord.datetime === inputValue);
+  let selectedinputElement = d3.select("#selectdate"), 
+      selectedinputValue = selectedinputElement.property("value");
+      if (selectedinputValue) {
+        var filteredData = filteredData.filter(ufoRecord => ufoRecord.datetime === selectedinputValue);
       }
 
   // Select the city input element and get the raw HTML node
   // Get the value property of the input element
-  let inputCityElement = d3.select("#city"), 
-       cityinputValue = inputCityElement.property("value");
-       if (cityinputValue) {
-        var filteredData = filteredData.filter(ufoRecord => ufoRecord.city === cityinputValue);
+  let selectedCityElement = d3.select("#selectcity"), 
+      selectedcityinputValue = selectedCityElement.property("value");
+      if (selectedcityinputValue) {
+        var filteredData = filteredData.filter(ufoRecord => ufoRecord.city === selectedcityinputValue);
       }
 
   // Select the state input element and get the raw HTML node
   // Get the value property of the input element
-  let inputStateElement = d3.select("#state"), 
-       stateinputValue = inputStateElement.property("value");
-       if (stateinputValue) {
-        var filteredData = filteredData.filter(ufoRecord => ufoRecord.state === stateinputValue);
+  let selectedStateElement = d3.select("#selectstate"), 
+       selectedstateinputValue = selectedStateElement.property("value");
+       if (selectedstateinputValue) {
+        var filteredData = filteredData.filter(ufoRecord => ufoRecord.state === selectedstateinputValue);
       }
 
   // Select the country input element and get the raw HTML node
   // Get the value property of the input element
-  let inputCountryElement = d3.select("#country"), 
-       countryinputValue = inputCountryElement.property("value");
-       if (countryinputValue) {
-        var filteredData = filteredData.filter(ufoRecord => ufoRecord.country === countryinputValue);
+  let selectedCountryElement = d3.select("#selectcountry"), 
+       selectedcountryinputValue = selectedCountryElement.property("value");
+       if (selectedcountryinputValue) {
+        var filteredData = filteredData.filter(ufoRecord => ufoRecord.country === selectedcountryinputValue);
       }
 
   // Select the shape input element and get the raw HTML node
   // Get the value property of the input element
-  let inputShapeElement = d3.select("#shape"), 
-       shapeinputValue = inputShapeElement.property("value");
-       if (shapeinputValue) {
-        var filteredData = filteredData.filter(ufoRecord => ufoRecord.shape === shapeinputValue);
+  let selectedShapeElement = d3.select("#selectshape"), 
+       selectedshapeinputValue = selectedShapeElement.property("value");
+       if (selectedshapeinputValue) {
+        var filteredData = filteredData.filter(ufoRecord => ufoRecord.shape === selectedshapeinputValue);
       }
  
 

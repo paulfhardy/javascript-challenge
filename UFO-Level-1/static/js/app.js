@@ -32,10 +32,10 @@ tableData.forEach(ufoReport => {
 const tdateselect = d3.select("#selectdate");
 
 // Gather all data in an array 
-var justdates = [];
+var justdates = [""];
 tableData.forEach(uforeport => justdates.push(uforeport.datetime));
 
-// Make the llist unique so values don't repeat
+// Make the list unique so values don't repeat
 const justdatesunique = Array.from(new Set(justdates));
 
 // Build the drop down list
