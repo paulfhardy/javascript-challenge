@@ -15,6 +15,8 @@ Level 2: [Level 2: Multiple Search Categories](UFO-Level-2)
 
 * Upon page load, the full data set is loaded and displayed on the page.
 
+* The date filter field has been implemented as a select option drop down list - to aid the user in easy selection criteria.
+
 * Data for each column listed here and available in the dataset appears on the page: 
 (`date/time`, `city`, `state`, `country`, `shape`, and `comment`)
 
@@ -31,6 +33,8 @@ Level 2: [Level 2: Multiple Search Categories](UFO-Level-2)
   3. `state`
   4. `country`
   5. `shape`
+
+* All filter fields have been implemented as select option drop down lists - to aid the user in easy selection criteria.
 
 * If the user clears all of the filter criteria, then the full data set is displayed, as on original load of the page.
 
